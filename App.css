@@ -1,0 +1,122 @@
+/* /src/App.css - simple centered layout with green shades and styled inputs */
+
+:root{
+  --bg-1: #e9f7ef;
+  --bg-2: #d8f2dc;
+  --accent: #2e8b57;
+  --accent-dark: #226645;
+  --input-bg: #ffffff;
+  --muted: #5b6b5b;
+}
+
+*{box-sizing:border-box}
+
+html,body,#root{
+  height:100%;
+}
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color:var(--muted);
+}
+
+/* Central card/container */
+.app-container{
+  width:min(720px, 94vw);
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,255,250,0.95));
+  border-radius:14px;
+  box-shadow: 0 8px 30px rgba(46, 139, 87, 0.12);
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  gap:14px; /* space between elements (inputs, headings) */
+  align-items:stretch;
+}
+
+/* Heading */
+.app-container h1{
+  margin:0;
+  color:var(--accent-dark);
+  font-size:1.4rem;
+  letter-spacing:0.2px;
+}
+
+/* Subtext */
+.app-container p{
+  margin:0;
+  font-size:0.95rem;
+  color:var(--muted);
+}
+
+/* Form layout */
+.form{
+  display:flex;
+  flex-direction:column;
+  gap:12px; /* consistent space between input boxes */
+  margin-top:6px;
+}
+
+/* Inputs and textareas */
+input[type="text"],
+input[type="url"],
+textarea,
+select{
+  appearance:none;
+  -webkit-appearance:none;
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px; /* changed shape: rounded */
+  border:1px solid rgba(46,139,87,0.12);
+  background:var(--input-bg);
+  box-shadow: 0 3px 10px rgba(46,139,87,0.04) inset;
+  font-size:1rem;
+  color:#16321f;
+  transition:transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+/* Slight lift on focus */
+input[type="text"]:focus,
+input[type="url"]:focus,
+textarea:focus,
+select:focus{
+  outline:none;
+  transform:translateY(-2px);
+  border-color:var(--accent);
+  box-shadow: 0 6px 22px rgba(46,139,87,0.12);
+}
+
+/* Smaller inputs row example */
+.row{
+  display:flex;
+  gap:10px; /* space between multiple inputs on same row */
+}
+
+/* Button styles */
+.btn{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:10px;
+  border:none;
+  background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow: 0 8px 18px rgba(34,102,69,0.12);
+  transition:transform 120ms ease, box-shadow 120ms ease, opacity 120ms;
+}
+
+.btn:hover{ transform:translateY(-2px); }
+.btn:active{ transform:translateY(0); opacity:0.95; }
+
+/* Helpful responsive tweak */
+@media (max-width:420px){
+  .app-container{ padding:18px; border-radius:12px; }
+  input[type="text"], .btn{ font-size:0.95rem; padding:10px 12px; }
+}
