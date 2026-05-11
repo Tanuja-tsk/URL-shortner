@@ -15,7 +15,7 @@ const generateShortUrl = async () => {
   }
 
   try {
-    const response = await fetch("http://localhost:8080/shorten", {
+    const response = await fetch("https://url-shortner-48iy.onrender.com/shorten", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ longUrl }),
@@ -24,7 +24,7 @@ const generateShortUrl = async () => {
     const data = await response.json();
 
     if (data && data.shortCode) {
-      setShortUrl(`http://localhost:8080/${data.shortCode}`);
+      setShortUrl(`https://url-shortner-48iy.onrender.com/${data.shortCode}`);
     } else {
       // fallback to a random code if server did not return a shortCode
       const code = Math.random().toString(36).substring(2, 8);
