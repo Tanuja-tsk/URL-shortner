@@ -7,8 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const MONGO_URI = "mongodb+srv://kranthiyts_db_user:tanuja_tsk@cluster0.nvpq53t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
+const MONGO_URI = process.env.MONGO_URI;
 mongoose.connect(MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB error:", err));
@@ -47,6 +46,5 @@ app.get("/:shortCode", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`🚀 Backend running on port ${PORT}`));
